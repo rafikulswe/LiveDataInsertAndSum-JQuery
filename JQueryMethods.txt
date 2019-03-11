@@ -1,0 +1,29 @@
+JQuery Events method:
+
+1. click()
+2. dblclick()
+3. mouseenter()
+4. mouseleave()
+5. focus()
+6. hover()
+7. blur()
+5. on('click')
+
+JQuery Effects method:
+
+1. hide()
+2. show()
+3. toggle()
+
+4. fadeIn()
+5. fadeOut()
+6. fadeToggle()
+7. fadeTo()
+
+8. slideDown()
+9. slideUp()
+10.slideToggle()
+11.stop()
+
+12.animate()
+13.callback function

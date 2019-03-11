@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <p id="three">Not Me</p>
+    <button id="para">For Para</button>
+    <button id="list">For List</button>
+    <button id="table">For Table</button>
+    <div class="mainDiv">
+        <button>Test</button>
+    </div>
+
+    <ul>
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+        <li>D</li>
+    </ul>
+    <ul>
+        <li>A</li>
+        <li>B</li>
+    </ul>
+
+    <table>
+        <tr>
+            <td>T</td>
+            <td>A</td>
+            <td>B</td>
+        </tr>
+        <tr>
+            <td>L</td>
+            <td>E</td>
+        </tr>
+    </table>
+    <p id="megaTest">Mega Test Paragraph</p>
+
+    <script>
+        $(document).ready(function() {
+            $('button#para').click(function() {
+                $('#three').hide();                           
+            });
+            $('button#list').click(function() {             
+                $('ul li:first-child').hide();                
+            });
+            $('button#table').click(function() {             
+                $('tr:odd').hide();                
+            });
+
+            $('.mainDiv').on('click', 'button', function() {             
+                $('#megaTest').hide();                
+            });
+        });
+    </script>
+</body>
+</html>
