@@ -64,7 +64,7 @@
                     columnValue += '<input type="hidden" name="product_prices[]" value="'+product_price+'">';
                 $('#tableColumn').append(columnValue);
                 $('#nothing_here').remove();
-                amountCount();
+                priceSum();
             });
 
 
@@ -77,11 +77,11 @@
                         $(element).find(".sl_no").text(index+1);
                     });
                 }
-                amountCount();
+                priceSum();
                 sl--;
             });
 
-            function amountCount() {
+            function priceSum() {
                 var total_amount = 0;
 
                 $('#tableColumn').find('input[name="product_prices[]"]').each(function(indexValue, element) {
