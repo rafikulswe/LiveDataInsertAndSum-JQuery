@@ -40,9 +40,9 @@
           <tfoot>
                 <tr>
                     <td colspan="2" style="text-align:right; font-weight:bold;">Total Amount</td>
-                    <td id="total_amount_area">
+                    <td>
                         <span>&#2547;</span>
-                        <span id="total_amount_text">00</span>
+                        <span id="total_amount_area">00</span>
                         <input type="hidden" name="total_amount" value="0"/>
                     </td>
                 </tr>
@@ -59,7 +59,7 @@
                 var columnValue = '<tr id="'+sl+'"><td class="sl_no">'+sl+'</td>';
                     columnValue += '<td>'+product_name+'</td>';
                     columnValue += '<td>'+product_price+'</td>';
-                    columnValue += '<td align="center"><i class="fas fa-window-close remove_amount" style="cursor:pointer;"></i></td></tr>';
+                    columnValue += '<td align="center"><i class="fas fa-window-close remove_product" style="cursor:pointer;"></i></td></tr>';
                     columnValue += '<input type="hidden" name="product_names[]" value="'+product_name+'">';
                     columnValue += '<input type="hidden" name="product_prices[]" value="'+product_price+'">';
                 $('#tableColumn').append(columnValue);
@@ -68,7 +68,7 @@
             });
 
 
-            $("#tableColumn").on('click', '.remove_amount', function(e) {
+            $("#tableColumn").on('click', '.remove_product', function(e) {
                 $(this).parent().parent().remove();
                 if($("#tableColumn > tr").length==0) {
                     $("#tableColumn").append('<tr><td colspan="4" align="center">Nothing here</td></tr>');
@@ -88,7 +88,7 @@
                     total_amount += parseInt($(element).val());
                     // alert(typeof(total_amount));
                 })
-                $('#total_amount_text').text(total_amount);
+                $('#total_amount_area').text(total_amount);
             }
         });
     </script>
