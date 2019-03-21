@@ -5,57 +5,73 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="jquery-3.3.1.min.js"></script>
+    <style>
+        .main{
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <p id="three">Not Me</p>
-    <button id="para">For Para</button>
-    <button id="list">For List</button>
-    <button id="table">For Table</button>
-    <div class="mainDiv">
-        <button>Test</button>
+    <div class="container">
+        <div class="main">
+            <label for="product_name">Product Name</label>
+            <input type="text" id="product_name">
+            <label for="product_price">Product Price</label>
+            <input type="text" id="product_price">
+            <input type="button" id="add" value="Add">
+        </div>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Product Name</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody id="tableColumn">
+            
+          </tbody>
+          <tfoot>
+                <tr>
+                    <td colspan="2" style="text-align:right; font-weight:bold;">Total Amount</td>
+                    <td id="total_amount_area" colspan="2">
+                        <span>&#2547;</span>
+                        <span id="total_amount_text">00</span>
+                        <input type="hidden" name="total_amount" value="0"/>
+                    </td>
+                </tr>
+          </tfoot>
+        </table>
     </div>
-
-    <ul>
-        <li>A</li>
-        <li>B</li>
-        <li>C</li>
-        <li>D</li>
-    </ul>
-    <ul>
-        <li>A</li>
-        <li>B</li>
-    </ul>
-
-    <table>
-        <tr>
-            <td>T</td>
-            <td>A</td>
-            <td>B</td>
-        </tr>
-        <tr>
-            <td>L</td>
-            <td>E</td>
-        </tr>
-    </table>
-    <p id="megaTest">Mega Test Paragraph</p>
-
     <script>
-        $(document).ready(function() {
-            $('button#para').click(function() {
-                $('#three').hide();                           
-            });
-            $('button#list').click(function() {             
-                $('ul li:first-child').hide();                
-            });
-            $('button#table').click(function() {             
-                $('tr:odd').hide();                
-            });
+        $(document).ready(function(){
+            sl=0;
+            $('.main').on('click', '#add', function() {
+                var product_name = $('#product_name').val();
+                var product_price = $('#product_price').val();
+                sl++;
+                var columnValue = '<tr id="'+sl+'"><td>'+sl+'</td>';
+                    columnValue += '<td>'+product_name+'</td>';
+                    columnValue += '<td>'+product_price+'</td></tr>';
+                    columnValue += '<input type="hidden" name="product_names[]" value="'+product_name+'">';
+                    columnValue += '<input type="hidden" name="product_prices[]" value="'+product_price+'">';
+                $('#tableColumn').append(columnValue);
+                amountCount();
+            })
 
-            $('.mainDiv').on('click', 'button', function() {             
-                $('#megaTest').hide();                
-            });
+            function amountCount() {
+                var total_amount = 0;
+
+                $('#tableColumn').find('input[name="product_prices[]"]').each(function(indexValue, element) {
+                    total_amount += parseInt($(element).val());
+                    // alert(typeof(total_amount));
+                })
+                $('#total_amount_text').text(total_amount);
+            }
         });
     </script>
 </body>

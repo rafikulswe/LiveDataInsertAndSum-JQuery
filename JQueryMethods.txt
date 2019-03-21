@@ -27,3 +27,9 @@ JQuery Effects method:
 
 12.animate()
 13.callback function
+
+JQuery HTML
+
+1. html()
+2. text()
+3. val()
