@@ -71,7 +71,7 @@
             $("#tableColumn").on('click', '.remove_product', function(e) {
                 $(this).parent().parent().remove();
                 if($("#tableColumn > tr").length==0) {
-                    $("#tableColumn").append('<tr><td colspan="4" align="center">Nothing here</td></tr>');
+                    $("#tableColumn").append('<tr id="nothing_here"><td colspan="4" align="center">Nothing here</td></tr>');
                 } else {
                     $("#tableColumn > tr").each(function(index, element) {
                         $(element).find(".sl_no").text(index+1);
